@@ -1,0 +1,11 @@
+{
+    "name": "机器睡眠控制器",
+    "icons": [
+      {
+        "src": "icons/512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "display" : "standalone"
+  }

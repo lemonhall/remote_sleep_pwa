@@ -1,7 +1,7 @@
 import subprocess
-from flask import Flask, request
-from flask_cors import CORS
 import paho.mqtt.client as mqtt
+
+from datetime import datetime
 
 # 定义进入睡眠状态的命令
 sleep_command = "rundll32.exe powrprof.dll,SetSuspendState 0,1,0"
@@ -18,6 +18,9 @@ def message_callback(client, userdata, message):
     msg = message.payload.decode("utf-8")
     if msg == "go_to_sleep":
         print("俺要去睡咯")
+        now = datetime.now()
+        formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
+        print("当前时间和日期：", formatted_now)
         put_windows_to_sleep()
 
 def on_connect(client, userdata, flags, reason_code, properties):
